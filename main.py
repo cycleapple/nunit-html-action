@@ -119,15 +119,19 @@ def parse_xml(filename_xml):
 
 
 def main():
-    filename_xml = "example.xml"
-    if len(sys.argv) > 1:
-        filename_xml = sys.argv[1]
+    if len(sys.argv) < 2:
+        print("Error: Please provide the NUnit XML input file path.")
+        sys.exit(1)
+    
+    filename_xml = sys.argv[1]
     filename_html = filename_xml.replace(".xml", "") + ".html"
+
     if len(sys.argv) > 2:
         filename_html = sys.argv[2]
+
     test_results = parse_xml(filename_xml)
     html = make_html(test_results)
-    file = open(filename_html, "w")
+    file = open(filename_html, "w", encoding='utf-8')  # Explicitly specify the file encoding
     file.write(html)
     file.close()
 
