@@ -24,9 +24,4 @@ runs:
         python -m pip install -r ${{ github.action_path }}/requirements.txt
 
     - name: Generate HTML report
-      run: |
-        python ${{ github.action_path }}/main.py ${{ inputs.inputXmlPath }} ${{ inputs.outputHtmlPath }}
-
-  branding:
-    icon: 'file'
-    color: 'green'
+      run: python ${{ github.action_path }}/main.py ${{ inputs.inputXmlPath }} ${{ inputs.outputHtmlPath }}
